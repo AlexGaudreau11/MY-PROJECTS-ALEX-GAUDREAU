@@ -1,0 +1,14 @@
+; Countdown from 15 to 0, then flash all the lights
+; Line numbers start at 0 (jumps use these numbers)
+
+Load 15      ; 0  A = 15
+Store 0      ; 1  memory[0] = 15 (the counter)
+Read 0       ; 2  select memory[0]
+Load mem     ; 3  A = memory[0]
+Sub 1        ; 4  A = A - 1
+Jzero 8      ; 5  when A reaches 0, go to the flash
+Store 0      ; 6  memory[0] = A
+Jump 2       ; 7  repeat
+Load 15      ; 8  all lights on  (1111)
+Load 0       ; 9  all lights off (0000)
+Jump 8       ; 10 flash forever
